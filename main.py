@@ -6,7 +6,7 @@ async def printer(gen: AsyncIterable[str]) -> None:
     async for item in gen:
         print(item)
         await asyncio.sleep(1)
-        print("sleepy item " + item)
+        print("delayed: " + item)
 
 async def main():
     streamer = Streamer()
