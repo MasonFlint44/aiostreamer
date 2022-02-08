@@ -1,5 +1,5 @@
 import asyncio
-from streamer import Streamer
+from aiostreamer import Streamer
 from typing import AsyncIterable
 
 async def printer(gen: AsyncIterable[str]) -> None:
