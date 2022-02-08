@@ -18,7 +18,7 @@ class Streamer(Generic[T]):
                 fut = self._loop.create_future()
                 self._pushers.append(fut)
                 try:
-                    yield await fut
+                    yield await fut # wait for next item to be pushed
                 finally:
                     self._pushers.remove(fut)
 
@@ -33,7 +33,7 @@ class Streamer(Generic[T]):
         fut = self._loop.create_future()
         self._waiters.append(fut)
         try:
-            await fut
+            await fut   # wait for generators to be ready (ready = all generators waiting on anext)
         finally:
             self._waiters.remove(fut)
 
